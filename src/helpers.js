@@ -19,12 +19,13 @@ export function getTableErrorGroups(table) {
     }
 
     // Get row
-    let row = group.rows[error['row-number']]
+    let location = error['item']['entity']['location']
+    let row = group.rows[error[location.row]]
 
     // Create row
     if (!row) {
       let values = error.row
-      if (!error['row-number']) {
+      if (!location.row) {
         values = table.headers
       }
       row = {
@@ -35,12 +36,12 @@ export function getTableErrorGroups(table) {
 
     // Ensure missing value
     if (error.code === 'missing-value') {
-      row.values[error['column-number'] - 1] = ''
+      row.values[location.column - 1] = ''
     }
 
     // Add row badcols
-    if (error['column-number']) {
-      row.badcols.add(error['column-number'])
+    if (location.column) {
+      row.badcols.add(location.column)
     } else if (row.values) {
       row.badcols = new Set(row.values.map((value, index) => index + 1))
     }
@@ -48,7 +49,7 @@ export function getTableErrorGroups(table) {
     // Save group
     group.count += 1
     group.messages.push(error.message)
-    group.rows[error['row-number']] = row
+    group.rows[location.row] = row
     groups[error.code] = group
 
   }
