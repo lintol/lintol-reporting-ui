@@ -10,68 +10,141 @@
             "time": 0.02,
             "errors": [
                 {
+                    "item": {
+                        "entity": {
+                            "type": "column",
+                            "location": {
+                                "column": 3
+                            }
+                        }
+                    },
                     "message": "Header in column 3 is blank",
-                    "column-number": 3,
-                    "row": null,
-                    "code": "blank-header",
-                    "row-number": null
+                    "context": [],
+                    "code": "blank-header"
                 },
                 {
                     "message": "Header in column 4 is duplicated to header in column(s) 2",
-                    "column-number": 4,
-                    "row": null,
+                    "context": [],
                     "code": "duplicate-header",
-                    "row-number": null
+                    "item": {
+                        "entity": {
+                            "type": "column",
+                            "location": {
+                                "column": 4
+                            }
+                        }
+                    }
                 },
                 {
                     "message": "Row 2 has a missing value in column 3",
-                    "column-number": 3,
-                    "row": [
-                        "1",
-                        "english"
+                    "item": {
+                        "entity": {
+                            "type": "cell",
+                            "location": {
+                                "column": 3,
+                                "row": 2
+                            }
+                        }
+                    },
+                    "context": [
+                        {
+                            "entity": {
+                                "type": "row",
+                                "definition": [
+                                    "1",
+                                    "english"
+                                ]
+                            }
+                        }
                     ],
-                    "code": "missing-value",
-                    "row-number": 2
+                    "code": "missing-value"
                 },
                 {
                     "message": "Row 2 has a missing value in column 4",
-                    "column-number": 4,
-                    "row": [
-                        "1",
-                        "english"
+                    "context": [
+                        {
+                            "entity": {
+                                "type": "row",
+                                "definition": [
+                                    "1",
+                                    "english"
+                                ]
+                            }
+                        }
                     ],
                     "code": "missing-value",
-                    "row-number": 2
+                    "item": {
+                        "entity": {
+                            "type": "cell",
+                            "location": {
+                                "column": 4,
+                                "row": 2
+                            }
+                        }
+                    }
                 },
                 {
                     "message": "Row 3 is duplicated to row(s) 2",
-                    "column-number": null,
-                    "row": [
-                        "1",
-                        "english"
+                    "context": [
+                        {
+                            "entity": {
+                                "type": "row",
+                                "definition": [
+                                    "1",
+                                    "english"
+                                ]
+                            }
+                        }
                     ],
                     "code": "duplicate-row",
-                    "row-number": 3
+                    "item": {
+                        "entity": {
+                            "type": "row",
+                            "location": {
+                                "row": 3
+                            }
+                        }
+                    }
                 },
                 {
                     "message": "Row 4 is completely blank",
-                    "column-number": null,
-                    "row": [],
+                    "context": [],
                     "code": "blank-row",
-                    "row-number": 4
+                    "item": {
+                        "entity": {
+                            "type": "row",
+                            "location": {
+                                "row": 3
+                            }
+                        }
+                    }
                 },
                 {
                     "message": "Row 5 has an extra value in column 5",
-                    "column-number": 5,
-                    "row": [
-                        "2",
-                        "german",
-                        "1",
-                        "2",
-                        "3"
+                    "context": [
+                        {
+                            "entity": {
+                                "type": "row",
+                                "definition": [
+                                    "2",
+                                    "german",
+                                    "1",
+                                    "2",
+                                    "3"
+                                ]
+                            }
+                        }
                     ],
                     "code": "extra-value",
-                    "row-number": 5
+                    "item": {
+                        "entity": {
+                            "type": "cell",
+                            "location": {
+                                "row": 5,
+                                "column": 5
+                            }
+                        }
+                    }
                 }
             ],
             "row-count": 5,
