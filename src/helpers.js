@@ -24,7 +24,7 @@ export function getTableErrorGroups(table) {
 
     // Create row
     if (!row) {
-      let values = error.row
+      let values = error.context[0].entity.definition
       if (!location.row) {
         values = table.headers
       }
