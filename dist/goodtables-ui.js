@@ -2639,13 +2639,23 @@ function getTableErrorGroups(table) {
       }
 
       // Get row
-      var row = group.rows[error['row-number']];
+      var location = error.item.entity.location;
+      var rownumber = location.row;
+      var columnnumber = location.column;
+      if (!rownumber) {
+        rownumber = null;
+      }
+      if (!columnnumber) {
+        columnnumber = null;
+      }
+
+      var row = group.rows[error[rownumber]];
 
       // Create row
       if (!row) {
-        var values = error.row;
-        if (!error['row-number']) {
-          values = table.headers;
+        var values = table.headers;
+        if (error.context && error.context.length > 0) {
+          values = error.context[0].entity.definition;
         }
         row = {
           values: values,
@@ -2655,12 +2665,12 @@ function getTableErrorGroups(table) {
 
       // Ensure missing value
       if (error.code === 'missing-value') {
-        row.values[error['column-number'] - 1] = '';
+        row.values[columnnumber - 1] = '';
       }
 
       // Add row badcols
-      if (error['column-number']) {
-        row.badcols.add(error['column-number']);
+      if (columnnumber) {
+        row.badcols.add(columnnumber);
       } else if (row.values) {
         row.badcols = new Set(row.values.map(function (value, index) {
           return index + 1;
@@ -2670,7 +2680,7 @@ function getTableErrorGroups(table) {
       // Save group
       group.count += 1;
       group.messages.push(error.message);
-      group.rows[error['row-number']] = row;
+      group.rows[rownumber] = row;
       groups[error.code] = group;
     }
   } catch (err) {

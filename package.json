@@ -1,13 +1,13 @@
 {
-  "name": "goodtables-ui",
-  "version": "1.2.1",
+  "name": "lintol-reporting-ui",
+  "version": "0.0.1",
   "license": "MIT",
-  "author": "roll <eskarev@gmail.com>",
-  "description": "UI components for goodtables",
-  "homepage": "https://github.com/frictionlessdata/goodtables-ui",
-  "bugs": "https://github.com/frictionlessdata/goodtables-ui/issues",
-  "repository": "github:frictionlessdata/goodtables-ui",
-  "main": "dist/goodtables-ui.js",
+  "author": "Project Lintol team <hello@lintol.io>",
+  "description": "Goodtables-based UI components for Lintol",
+  "homepage": "https://github.com/lintol/lintol-reporting-ui",
+  "bugs": "https://github.com/lintol/lintol-reporting-ui/issues",
+  "repository": "github:lintol/lintol-reporting-ui",
+  "main": "dist/lintol-reporting-ui.js",
   "engines": {
     "node": ">=4"
   },
@@ -35,7 +35,8 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "lodash": "^4.17.4",
-    "marked": "^0.3.6"
+    "marked": "^0.3.6",
+    "goodtables-ui": "^1.2.1"
   },
   "devDependencies": {
     "axios": "^0.16.2",
