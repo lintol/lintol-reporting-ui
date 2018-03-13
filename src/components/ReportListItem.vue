@@ -21,7 +21,7 @@ export default {
       required: true
     },
     content: {
-      type: String,
+      type: Object,
       required: true
     },
     reportId: {
@@ -37,7 +37,7 @@ export default {
     openIssue: function () {
       console.log('Sending');
       console.log(this.content);
-      if (JSON.parse(this.content).preset === 'geojson') {
+      if (this.content.preset === 'geojson') {
         this.$router.push({name: 'mapDetails', params: {'reportId': this.reportId, 'reportItem': this.reportItem, 'reportMetaData': this.content}});
       } else {
         this.$router.push({name: 'tabularDetails', params: {'reportId': this.reportId, 'reportItem': this.reportItem, 'reportMetaData': this.content}});
@@ -57,8 +57,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-@import '~@/assets/scss/application.scss';
-@import '~@/assets/scss/reports.scss';
 
 .rowBorders {
   display: flex;

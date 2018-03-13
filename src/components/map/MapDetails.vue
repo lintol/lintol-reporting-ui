@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     reportMetaDataObject: function () {
-      return JSON.parse(this.reportMetaData);
+      return this.reportMetaData;
     },
     boundaryUrl: function () {
       var url = 'http://osni-spatial-ni.opendata.arcgis.com/datasets/d9dfdaf77847401e81efc9471dcd09e1_0.geojson';
@@ -95,8 +95,6 @@ export default {
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style lang='scss' scoped>
-@import '~@/assets/scss/application.scss';
-@import "~leaflet/dist/leaflet.css";
 .processor {
   font-size: 17px;
   color: #333333;

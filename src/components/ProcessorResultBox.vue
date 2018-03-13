@@ -60,7 +60,6 @@ export default {
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style lang='scss' scoped>
-@import '~@/assets/scss/application.scss';
 
 .box {
   min-width:250px;
@@ -86,11 +85,11 @@ label {
 }
 
 .activatedProcessorBox {
-   background-color: $orange;
+   background-color: #f88;
 }
 
 .deactivatedProcessorBox {
-   background-color: $orange;
+   background-color: #f88;
 }
 
 </style>

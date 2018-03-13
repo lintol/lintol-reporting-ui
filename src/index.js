@@ -1,10 +1,8 @@
 import './styles.scss'
 import {render} from './render'
-import {Report} from './components/Report'
-import {Form} from './components/Form'
-
+import ReportView from './components/ReportView'
 
 // Module API
 
-export default {render, Report, Form}
-export {render, Report, Form}
+export default {render, ReportView}
+export {render, ReportView}

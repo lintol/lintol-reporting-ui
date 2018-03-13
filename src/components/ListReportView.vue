@@ -36,19 +36,18 @@
             </select>
           </div>
        </div>
-       <report-list-item :key="index" :reportId="reportId" :content="report.content" :reportItem="reportItem" v-for="(reportItem, index) in filteredReportItems"></report-list-item>
+       <report-list-item :key="index" :reportId="reportId" :content="report" :reportItem="reportItem" v-for="(reportItem, index) in filteredReportItems"></report-list-item>
        <p v-if="reportItems.length === 0" >There are no items for this report</p>
   </div>
 </template>
 
 <script>
-import { LOAD_REPORT } from '@/state/action-types';
 import ReportListItem from './ReportListItem';
 export default {
   name: 'ReportView',
   props: {
-    reportId: {
-      type: String,
+    report: {
+      type: Object,
       required: true
     }
   },
@@ -63,18 +62,16 @@ export default {
   components: {
     ReportListItem: ReportListItem
   },
+  mounted: function () {
+    console.log('mounted listreportview');
+    console.log(this.report);
+  },
   computed: {
-    report: function () {
-      var report = this.$store.state.currentReport;
-      console.log('One report');
-      console.log(report);
-      return report;
-    },
     reportItems: function () {
       var reportItems = [];
       console.log(this.report);
       if (this.report) {
-        var content = JSON.parse(this.report.content);
+        var content = this.report;
         reportItems = [];
         reportItems = reportItems.concat(content.tables[0].errors);
         reportItems = reportItems.concat(content.tables[0].warnings);
@@ -88,7 +85,7 @@ export default {
       var result = [];
       var reportItems = [];
       if (this.report) {
-        var content = JSON.parse(this.report.content);
+        var content = this.report;
         reportItems = [];
         reportItems = reportItems.concat(content.tables[0].errors);
         reportItems = reportItems.concat(content.tables[0].warnings);
@@ -107,7 +104,7 @@ export default {
       var result = [];
       var reportItems = [];
       if (this.report) {
-        var content = JSON.parse(this.report.content);
+        var content = this.report;
         reportItems = [];
         reportItems = reportItems.concat(content.tables[0].errors);
         reportItems = reportItems.concat(content.tables[0].warnings);
@@ -144,10 +141,6 @@ export default {
       }
     }
   },
-  mounted: function () {
-    console.log('Loading REport');
-    this.$store.dispatch(LOAD_REPORT, this.reportId);
-  },
   watch: {
   }
 };
@@ -155,8 +148,6 @@ export default {
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style lang='scss' scoped>
-@import '~@/assets/scss/application.scss';
-@import '~@/assets/scss/reports.scss';
 
 .ragBar {
   display: flex;

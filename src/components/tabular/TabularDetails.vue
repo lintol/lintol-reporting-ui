@@ -51,7 +51,7 @@ export default {
   },
   mounted: function () {
     const element = document.getElementById('report');
-    var content = this.setOneError(JSON.parse(this.reportMetaData));
+    var content = this.setOneError(this.reportMetaData);
     goodtablesUI.render(goodtablesUI.Report, {report: content}, element);
   }
 };
@@ -59,7 +59,6 @@ export default {
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style lang='scss' scoped>
-@import '~@/assets/scss/application.scss';
 
 .processor {
   font-size: 17px;
